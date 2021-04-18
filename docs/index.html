@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Merger_Paradox</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>index</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14254,7 +14254,7 @@ a.anchor-link {
 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Proving-the-Merger-Paradox">Proving the Merger Paradox<a class="anchor-link" href="#Proving-the-Merger-Paradox">&#182;</a></h1><h2 id="Spanos-Ioannis">Spanos Ioannis<a class="anchor-link" href="#Spanos-Ioannis">&#182;</a></h2><p>This presentation is a Jupiter Notebook, so that we can interactively run python code.
+<h1 id="Cournot-market-competition-simulations">Cournot market competition simulations<a class="anchor-link" href="#Cournot-market-competition-simulations">&#182;</a></h1><h2 id="Spanos-Ioannis">Spanos Ioannis<a class="anchor-link" href="#Spanos-Ioannis">&#182;</a></h2><p>This presentation is a Jupiter Notebook, so that we can interactively run python code.
 It is accompanied by a script writen in python, linked bellow.</p>
 <p>This file also serves as documentation for the aforementioned script and is published under the MIT licence.</p>
 <p>Copyright 2021 Spanos Ioannis, github.com/ispanos</p>
@@ -14275,42 +14275,6 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEAL
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Data-interpretation">Data interpretation<a class="anchor-link" href="#Data-interpretation">&#182;</a></h1><p>&nbsp;&nbsp;&nbsp;&nbsp; To calculate the units that each company produces, based on their total costs
-and total units produced in the market, we can solve the following equation for q.</p>
-$$
-\begin{bmatrix}
-1 &amp; \frac{1}{2} &amp; \frac{1}{2}\\
-\frac{1}{2} &amp; 1 &amp; \frac{1}{2}\\
-\frac{1}{2} &amp; \frac{1}{2} &amp; 1
-\end{bmatrix}*
-\begin{bmatrix}
-q_{1}\\ q_{2}\\ q_{3}
-\end{bmatrix}=
-\begin{bmatrix}
-\frac{a\ -\ MC_{1}}{2*B}\\
-\frac{a\ -\ MC_{2}}{2*B}\\
-\frac{a\ -\ MC_{3}}{2*B}\\
-\end{bmatrix}
-$$<p>&nbsp;&nbsp;&nbsp;&nbsp; However, based on our generated date, we assume that 'Q' column, can be interpreted
-both as the total units of production, when we try to calculate the demand
-curve, as well as the production of each company individually, when trying to
-calculate their marginal cost curves.</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; With that assumption, we can calculate the marginal costs for each stage of
-production, by calculating the first differences of the total cost array, dividing
-it by the first differences of the production array. Then, we run a simple OLS
-regression for the company's production (independent variable) and their marginal
-cost (dependent variable).</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; The only purpose that this assumption serves, is compatibility with our original
-data source - the example spreadsheet.</p>
-<h3 id="Data-problem">Data problem<a class="anchor-link" href="#Data-problem">&#182;</a></h3><p>&nbsp;&nbsp;&nbsp;&nbsp; The issue that arises from our data however, is that we have panel data with the
-equilibrium combinations of prices and units of production. Thus, the variations
-over time are due to changes to the production costs of the companies, or lateral
-and vertical moves of the demand.</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Defining-our-market">Defining our market<a class="anchor-link" href="#Defining-our-market">&#182;</a></h1><p>We assume the Inverse Demand Curve is linear,
 $$
 P = Α - Β*Q
@@ -14319,15 +14283,15 @@ where P is the Price and Q is the total demand.</p>
 <p>We also assume that the first derivatives of the Cost Curves of our companies are:</p>
 $$
 MC_{i} = K_{i} + M_{i}q_{i}
-$$<p>Where <strong>i</strong> is the number of the company. In our case, in the beginning there are 3.</p>
+$$<p>where <strong>i</strong> is the number of the company. In our case, in the beginning there are 3.</p>
 
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Calculating-production-levels">Calculating production levels<a class="anchor-link" href="#Calculating-production-levels">&#182;</a></h1><h2 id="Best-Responses">Best Responses<a class="anchor-link" href="#Best-Responses">&#182;</a></h2><p>Since the companies are in a <strong>Cournot market game</strong>, each one of them is going to
-maximize its profits, by adjusting its production, according the demand and their
-competitors' production.</p>
+maximize its profits, by adjusting its production, according the demand and its
+competitor's production.</p>
 $$
 maxΠ_{i}(q_{i}) =&gt; MR_{i} = MC_{i}\ (1)
 \\...\\
@@ -14358,8 +14322,8 @@ $$
 <h1 id="Merger">Merger<a class="anchor-link" href="#Merger">&#182;</a></h1><p>After two companies, i and j, merge, we need to add the two marginal cost curves horizontally:</p>
 $$
 q_{m} = q_{i(MC_{i})} + q_{j(MC_{j})},
-\\\ where\ q_{m(MC_{m})}\ is\ the\ inverse\ marginal\ cost\ curve\ of\ the\ new\ company\ -\ m.
-$$<p>The new company, has now the following marginal cost:</p>
+$$<p>where $q_{m(MC_{m})}$ is the inverse marginal cost curve of the new company - m.</p>
+<p>The new company, has now the following marginal cost:</p>
 $$
 MC_{m} =
 \frac{M_{j}*K_{i} + M_{i}*K_{j}} {M_{i} + M_{j}} +
@@ -14393,8 +14357,7 @@ and the other one has a linear marginal cost, the script terminates. In cases li
 <p>&nbsp;&nbsp;&nbsp;&nbsp; To manually find if the company is going to produce in both facilities or not,
 calculate $q_{m}$, solve for $MC_{m}$ and run the function
 <code>set_cournot_production(demand, companies)</code> for all 3 possible $MC_{m}$ curves.
-The resulting company with the highest profits, has the optimal $MC$ parameters
-for the current market.</p>
+Out of the three possible outcomes, select the marginal cost curve that maximizes the profits of company m.</p>
 
 </div>
 </div>
@@ -14456,7 +14419,7 @@ every company competing in the market.</li>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-python"><pre><span></span><span class="kn">from</span> <span class="nn">cournot</span> <span class="kn">import</span> <span class="o">*</span>
@@ -14490,14 +14453,14 @@ every company competing in the market.</li>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Company 4 with Mc = 2.71 + 5.34 * q
- 	Produces 29.25  with €13529.37 profit.
+<pre>Company 1 with Mc = 2.71 + 5.34 * q
+	Produces 29.25 units  with €13529.37 profit.
 
-Company 5 with Mc = 6.13 + 1.11 * q
- 	Produces 36.36  with €20906.58 profit.
+Company 2 with Mc = 6.13 + 1.11 * q
+	Produces 36.36 units  with €20906.58 profit.
 
-Company 6 with Mc = 4.75 + 1.53 * q
- 	Produces 35.56  with €19995.47 profit.
+Company 3 with Mc = 4.75 + 1.53 * q
+	Produces 35.56 units  with €19995.47 profit.
 
 Total production is 101.18 units @ €621.41.
 HHI:3363
@@ -14512,7 +14475,7 @@ HHI:3363
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-python"><pre><span></span><span class="k">for</span> <span class="n">combination</span> <span class="ow">in</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]:</span>
@@ -14524,8 +14487,8 @@ HHI:3363
     <span class="n">old_profits</span><span class="o">=</span><span class="nb">sum</span><span class="p">([</span><span class="n">companies</span><span class="p">[</span><span class="n">combination</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">profits</span><span class="p">(</span><span class="n">price</span><span class="p">),</span>
                      <span class="n">companies</span><span class="p">[</span><span class="n">combination</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span><span class="o">.</span><span class="n">profits</span><span class="p">(</span><span class="n">price</span><span class="p">)])</span>
     
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The sum of the profits, of companies </span><span class="si">{</span><span class="n">companies</span><span class="p">[</span><span class="n">combination</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
-          <span class="sa">f</span><span class="s2">&quot;and </span><span class="si">{</span><span class="n">companies</span><span class="p">[</span><span class="n">combination</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="se">\n</span><span class="s2"> </span><span class="se">\t</span><span class="s2"> before the merger, where:&quot;</span><span class="p">,</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The sum of the profits of companies </span><span class="si">{</span><span class="n">companies</span><span class="p">[</span><span class="n">combination</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+          <span class="sa">f</span><span class="s2">&quot;and </span><span class="si">{</span><span class="n">companies</span><span class="p">[</span><span class="n">combination</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="se">\n</span><span class="s2"> </span><span class="se">\t</span><span class="s2"> before the merger were:&quot;</span><span class="p">,</span>
           <span class="sa">f</span><span class="s2">&quot;€</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">old_profits</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="n">market_stats_dump</span><span class="p">(</span><span class="n">post_merge</span><span class="p">,</span> <span class="n">quantity</span><span class="p">,</span> <span class="n">new_price</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;HHI:</span><span class="si">{</span><span class="n">hhi</span><span class="p">(</span><span class="n">post_merge</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -14550,14 +14513,14 @@ HHI:3363
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>The sum of the profits, of companies 4 and 5
- 	 before the merger, where: €34435.96
+<pre>The sum of the profits of companies 1 and 2
+ 	 before the merger were: €34435.96
 
-Company 4&amp;5 with Mc = 5.54 + 0.92 * q
- 	Produces 46.34  with €33954.67 profit.
+Company 1&amp;2 with Mc = 5.54 + 0.92 * q
+	Produces 46.34 units  with €33954.67 profit.
 
-Company 6 with Mc = 4.75 + 1.53 * q
- 	Produces 44.76  with €31668.42 profit.
+Company 3 with Mc = 4.75 + 1.53 * q
+	Produces 44.76 units  with €31668.42 profit.
 
 Total production is 101.18 units @ €780.81.
 HHI:5002
@@ -14565,14 +14528,14 @@ The new price is 26.0% higher.
 
 ************************************************************
 
-The sum of the profits, of companies 4 and 6
- 	 before the merger, where: €38063.87
+The sum of the profits of companies 1 and 3
+ 	 before the merger were: €38063.87
 
-Company 4&amp;6 with Mc = 4.3 + 1.19 * q
- 	Produces 45.56  with €32817.94 profit.
+Company 1&amp;3 with Mc = 4.3 + 1.19 * q
+	Produces 45.56 units  with €32817.94 profit.
 
-Company 5 with Mc = 6.13 + 1.11 * q
- 	Produces 45.67  with €32969.39 profit.
+Company 2 with Mc = 6.13 + 1.11 * q
+	Produces 45.67 units  with €32969.39 profit.
 
 Total production is 101.18 units @ €778.79.
 HHI:5000
@@ -14580,14 +14543,14 @@ The new price is 25.0% higher.
 
 ************************************************************
 
-The sum of the profits, of companies 5 and 6
- 	 before the merger, where: €50317.11
+The sum of the profits of companies 2 and 3
+ 	 before the merger were: €50317.11
 
-Company 5&amp;6 with Mc = 5.55 + 0.64 * q
- 	Produces 49.67  with €39004.7 profit.
+Company 2&amp;3 with Mc = 5.55 + 0.64 * q
+	Produces 49.67 units  with €39004.7 profit.
 
-Company 4 with Mc = 2.71 + 5.34 * q
- 	Produces 38.77  with €23769.22 profit.
+Company 1 with Mc = 2.71 + 5.34 * q
+	Produces 38.77 units  with €23769.22 profit.
 
 Total production is 101.18 units @ €822.78.
 HHI:5076
@@ -14607,11 +14570,11 @@ The new price is 32.0% higher.
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Merger-Paradox">Merger Paradox<a class="anchor-link" href="#Merger-Paradox">&#182;</a></h1><p>&nbsp;&nbsp;&nbsp;&nbsp; As we simulate the mergers of two companies, by adding their $q_{(mc)}$ horizontally,
-we observe that the resulting companies, produce fewer units. The competing companies
+we observe that the resulting companies produce fewer units. The competing companies
 are now fewer, thus the HHI index increases after the merger. The new equilibrium is
-closer to the equilibrium in a monopoly. However, the profits of the newly created
+closer to the equilibrium of a monopoly. However, the profits of the newly created
 company are less than the sum of the profits of the companies that merged.</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; The company that benefits from the merger, is the one that did not take part in it.
+<p>&nbsp;&nbsp;&nbsp;&nbsp; The company that benefits from the merger is the one that did not take part in it.
 This happens because both its market share, and the market price, increase.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp; The conclusion is that neither the consumers, nor the companies that took part in the
 merger, benefit from the merger. The only beneficiary is the company that did not take part in the merger.</p>
@@ -14621,13 +14584,13 @@ merger, benefit from the merger. The only beneficiary is the company that did no
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <hr>
-<h1 id="Extras">Extras<a class="anchor-link" href="#Extras">&#182;</a></h1><h2 id="Consecutive-mergers---Simulation-#2">Consecutive mergers - Simulation #2<a class="anchor-link" href="#Consecutive-mergers---Simulation-#2">&#182;</a></h2><p>&nbsp;&nbsp;&nbsp;&nbsp; Now, lets try a market composed of more companies, since we are able to add as many companies as we want in the simulation.</p>
+<h1 id="Extras">Extras<a class="anchor-link" href="#Extras">&#182;</a></h1><h2 id="Consecutive-mergers---Simulation-#2">Consecutive mergers - Simulation #2<a class="anchor-link" href="#Consecutive-mergers---Simulation-#2">&#182;</a></h2><p>&nbsp;&nbsp;&nbsp;&nbsp; Now, lets simulate a market comprized of more comprised, given that we are able to add as many companies as we want in the simulation.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-python"><pre><span></span><span class="n">reset_names</span><span class="p">()</span>
@@ -14666,25 +14629,25 @@ merger, benefit from the merger. The only beneficiary is the company that did no
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>Company 1 with Mc = 2.71 + 5.34 * q
- 	Produces 14.85  with €3484.77 profit.
+	Produces 14.85 units  with €3484.77 profit.
 
 Company 2 with Mc = 6.13 + 1.11 * q
- 	Produces 18.36  with €5326.99 profit.
+	Produces 18.36 units  with €5326.99 profit.
 
 Company 3 with Mc = 4.75 + 1.53 * q
- 	Produces 17.99  with €5117.23 profit.
+	Produces 17.99 units  with €5117.23 profit.
 
 Company 4 with Mc = 1.0 + 3.4 * q
- 	Produces 16.43  with €4270.29 profit.
+	Produces 16.43 units  with €4270.29 profit.
 
 Company 5 with Mc = 4.0 + 2.0 * q
- 	Produces 17.56  with €4874.07 profit.
+	Produces 17.56 units  with €4874.07 profit.
 
 Company 6 with Mc = 5.0 + 1.6 * q
- 	Produces 17.9  with €5068.04 profit.
+	Produces 17.9 units  with €5068.04 profit.
 
 Company 7 with Mc = 4.0 + 2.2 * q
- 	Produces 17.36  with €4766.41 profit.
+	Produces 17.36 units  with €4766.41 profit.
 
 Total production is 120.45 units @ €316.71.
 HHI:1435
@@ -14699,7 +14662,7 @@ HHI:1435
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-python"><pre><span></span><span class="n">new_price</span><span class="p">,</span> <span class="n">post_merge</span> <span class="o">=</span> <span class="n">consecutive_merger</span><span class="p">(</span><span class="n">price</span><span class="p">,</span><span class="n">companies</span><span class="p">,(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span><span class="n">D</span><span class="p">)</span>
@@ -14722,30 +14685,195 @@ HHI:1435
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>The sum of the profits, of companies 1 and 2
+<pre>The sum of the profits of companies 1 and 2
  	before the merger, were: €8811.76
 
 Company 1&amp;2 with Mc = 5.54 + 0.92 * q
- 	Produces 20.77  with €6822.04 profit.
+	Produces 20.77 units  with €6822.04 profit.
 
 Company 3 with Mc = 4.75 + 1.53 * q
- 	Produces 20.09  with €6378.68 profit.
+	Produces 20.09 units  with €6378.68 profit.
 
 Company 4 with Mc = 1.0 + 3.4 * q
- 	Produces 18.33  with €5309.77 profit.
+	Produces 18.33 units  with €5309.77 profit.
 
 Company 5 with Mc = 4.0 + 2.0 * q
- 	Produces 19.6  with €6072.53 profit.
+	Produces 19.6 units  with €6072.53 profit.
 
 Company 6 with Mc = 5.0 + 1.6 * q
- 	Produces 19.99  with €6318.41 profit.
+	Produces 19.99 units  with €6318.41 profit.
 
 Company 7 with Mc = 4.0 + 2.2 * q
- 	Produces 19.38  with €5938.4 profit.
+	Produces 19.38 units  with €5938.4 profit.
 
 Total production is 118.16 units @ €353.05.
 HHI:1669
 The new price is 11.0% higher.
+
+************************************************************
+
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-python"><pre><span></span><span class="n">new_price</span><span class="p">,</span> <span class="n">post_merge</span> <span class="o">=</span> <span class="n">consecutive_merger</span><span class="p">(</span><span class="n">new_price</span><span class="p">,</span><span class="n">post_merge</span><span class="p">,(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span><span class="n">D</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>The sum of the profits of companies 1&amp;2 and 3
+ 	before the merger, were: €13200.72
+
+Company 1&amp;2&amp;3 with Mc = 5.24 + 0.57 * q
+	Produces 24.7 units  with €9642.67 profit.
+
+Company 4 with Mc = 1.0 + 3.4 * q
+	Produces 21.28 units  with €7162.31 profit.
+
+Company 5 with Mc = 4.0 + 2.0 * q
+	Produces 22.79 units  with €8210.76 profit.
+
+Company 6 with Mc = 5.0 + 1.6 * q
+	Produces 23.26 units  with €8550.1 profit.
+
+Company 7 with Mc = 4.0 + 2.2 * q
+	Produces 22.54 units  with €8029.42 profit.
+
+Total production is 114.56 units @ €409.87.
+HHI:2005
+The new price is 16.0% higher.
+
+************************************************************
+
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-python"><pre><span></span><span class="n">new_price</span><span class="p">,</span> <span class="n">post_merge</span> <span class="o">=</span> <span class="n">consecutive_merger</span><span class="p">(</span><span class="n">new_price</span><span class="p">,</span><span class="n">post_merge</span><span class="p">,(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span><span class="n">D</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>The sum of the profits of companies 1&amp;2&amp;3 and 4
+ 	before the merger, were: €16804.98
+
+Company 1&amp;2&amp;3&amp;4 with Mc = 4.63 + 0.49 * q
+	Produces 29.27 units  with €13545.94 profit.
+
+Company 5 with Mc = 4.0 + 2.0 * q
+	Produces 26.83 units  with €11378.06 profit.
+
+Company 6 with Mc = 5.0 + 1.6 * q
+	Produces 27.39 units  with €11857.11 profit.
+
+Company 7 with Mc = 4.0 + 2.2 * q
+	Produces 26.53 units  with €11126.76 profit.
+
+Total production is 110.01 units @ €481.78.
+HHI:2504
+The new price is 18.0% higher.
+
+************************************************************
+
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-python"><pre><span></span><span class="n">new_price</span><span class="p">,</span> <span class="n">post_merge</span> <span class="o">=</span> <span class="n">consecutive_merger</span><span class="p">(</span><span class="n">new_price</span><span class="p">,</span><span class="n">post_merge</span><span class="p">,(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span><span class="n">D</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>The sum of the profits of companies 1&amp;2&amp;3&amp;4 and 5
+ 	before the merger, were: €24924.01
+
+Company 1&amp;2&amp;3&amp;4&amp;5 with Mc = 4.51 + 0.39 * q
+	Produces 36.36 units  with €20906.78 profit.
+
+Company 6 with Mc = 5.0 + 1.6 * q
+	Produces 33.82 units  with €18081.11 profit.
+
+Company 7 with Mc = 4.0 + 2.2 * q
+	Produces 32.75 units  with €16953.88 profit.
+
+Total production is 102.93 units @ €593.77.
+HHI:3340
+The new price is 23.0% higher.
 
 ************************************************************
 
@@ -14783,179 +14911,14 @@ The new price is 11.0% higher.
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>The sum of the profits, of companies 1&amp;2 and 3
- 	before the merger, were: €13200.72
-
-Company 1&amp;2&amp;3 with Mc = 5.24 + 0.57 * q
- 	Produces 24.7  with €9642.67 profit.
-
-Company 4 with Mc = 1.0 + 3.4 * q
- 	Produces 21.28  with €7162.31 profit.
-
-Company 5 with Mc = 4.0 + 2.0 * q
- 	Produces 22.79  with €8210.76 profit.
-
-Company 6 with Mc = 5.0 + 1.6 * q
- 	Produces 23.26  with €8550.1 profit.
-
-Company 7 with Mc = 4.0 + 2.2 * q
- 	Produces 22.54  with €8029.42 profit.
-
-Total production is 114.56 units @ €409.87.
-HHI:2005
-The new price is 16.0% higher.
-
-************************************************************
-
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-python"><pre><span></span><span class="n">new_price</span><span class="p">,</span> <span class="n">post_merge</span> <span class="o">=</span> <span class="n">consecutive_merger</span><span class="p">(</span><span class="n">new_price</span><span class="p">,</span><span class="n">post_merge</span><span class="p">,(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span><span class="n">D</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>The sum of the profits, of companies 1&amp;2&amp;3 and 4
- 	before the merger, were: €16804.98
-
-Company 1&amp;2&amp;3&amp;4 with Mc = 4.63 + 0.49 * q
- 	Produces 29.27  with €13545.94 profit.
-
-Company 5 with Mc = 4.0 + 2.0 * q
- 	Produces 26.83  with €11378.06 profit.
-
-Company 6 with Mc = 5.0 + 1.6 * q
- 	Produces 27.39  with €11857.11 profit.
-
-Company 7 with Mc = 4.0 + 2.2 * q
- 	Produces 26.53  with €11126.76 profit.
-
-Total production is 110.01 units @ €481.78.
-HHI:2504
-The new price is 18.0% higher.
-
-************************************************************
-
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-python"><pre><span></span><span class="n">new_price</span><span class="p">,</span> <span class="n">post_merge</span> <span class="o">=</span> <span class="n">consecutive_merger</span><span class="p">(</span><span class="n">new_price</span><span class="p">,</span><span class="n">post_merge</span><span class="p">,(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span><span class="n">D</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>The sum of the profits, of companies 1&amp;2&amp;3&amp;4 and 5
- 	before the merger, were: €24924.01
-
-Company 1&amp;2&amp;3&amp;4&amp;5 with Mc = 4.51 + 0.39 * q
- 	Produces 36.36  with €20906.78 profit.
-
-Company 6 with Mc = 5.0 + 1.6 * q
- 	Produces 33.82  with €18081.11 profit.
-
-Company 7 with Mc = 4.0 + 2.2 * q
- 	Produces 32.75  with €16953.88 profit.
-
-Total production is 102.93 units @ €593.77.
-HHI:3340
-The new price is 23.0% higher.
-
-************************************************************
-
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-python"><pre><span></span><span class="n">new_price</span><span class="p">,</span> <span class="n">post_merge</span> <span class="o">=</span> <span class="n">consecutive_merger</span><span class="p">(</span><span class="n">new_price</span><span class="p">,</span><span class="n">post_merge</span><span class="p">,(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span><span class="n">D</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>The sum of the profits, of companies 1&amp;2&amp;3&amp;4&amp;5 and 6
+<pre>The sum of the profits of companies 1&amp;2&amp;3&amp;4&amp;5 and 6
  	before the merger, were: €38987.89
 
 Company 1&amp;2&amp;3&amp;4&amp;5&amp;6 with Mc = 4.6 + 0.32 * q
- 	Produces 48.08  with €36541.23 profit.
+	Produces 48.08 units  with €36541.23 profit.
 
 Company 7 with Mc = 4.0 + 2.2 * q
- 	Produces 43.08  with €29343.08 profit.
+	Produces 43.08 units  with €29343.08 profit.
 
 Total production is 91.16 units @ €779.89.
 HHI:5015
@@ -14974,7 +14937,7 @@ The new price is 31.0% higher.
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Table-of-the-total-profits">Table of the total profits<a class="anchor-link" href="#Table-of-the-total-profits">&#182;</a></h3><table>
+<h3 id="Table-of-total-profits">Table of total profits<a class="anchor-link" href="#Table-of-total-profits">&#182;</a></h3><table>
 <thead><tr>
 <th>Companies</th>
 <th style="text-align:center">Not merged</th>
@@ -14984,28 +14947,28 @@ The new price is 31.0% higher.
 <tbody>
 <tr>
 <td>1, 2</td>
-<td style="text-align:center">8811.76</td>
-<td style="text-align:center">6822.04</td>
+<td style="text-align:center">€8811.76</td>
+<td style="text-align:center">€6822.04</td>
 </tr>
 <tr>
 <td>1, 2, 3</td>
-<td style="text-align:center">13928.99</td>
-<td style="text-align:center">9642.67</td>
+<td style="text-align:center">€13928.99</td>
+<td style="text-align:center">€9642.67</td>
 </tr>
 <tr>
 <td>1, 2, 3, 4</td>
-<td style="text-align:center">18199.28</td>
-<td style="text-align:center">13545.94</td>
+<td style="text-align:center">€18199.28</td>
+<td style="text-align:center">€13545.94</td>
 </tr>
 <tr>
 <td>1, 2, ..., 5</td>
-<td style="text-align:center">23073.35</td>
-<td style="text-align:center">20906.78</td>
+<td style="text-align:center">€23073.35</td>
+<td style="text-align:center">€20906.78</td>
 </tr>
 <tr>
 <td>1, 2, ..., 6</td>
-<td style="text-align:center">28141.39</td>
-<td style="text-align:center">36541.23</td>
+<td style="text-align:center">€28141.39</td>
+<td style="text-align:center">€36541.23</td>
 </tr>
 </tbody>
 </table>
@@ -15015,9 +14978,9 @@ The new company, named "<code>1&amp;2&amp;3&amp;4&amp;5&amp;6</code>" in the abo
 a €36541.23 profit. This happens because we have much less competition,
 with an HHI index that's three times higher than before.
 The price is more than two times higher, and the production is 25% lower.</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; Furthermore, the mergers that include less than 6 companies, are not profitable,
+<p>&nbsp;&nbsp;&nbsp;&nbsp; Furthermore, the mergers that include less than 6 companiesare not profitable,
 hence the companies would rather compete than merge.</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; In a real market however, a merger like that would create a huge dead weight loss,
+<p>&nbsp;&nbsp;&nbsp;&nbsp; In a real market however, a merger like that would create a huge dead weight loss
 and such a price increase, that no committee would ever allow such a merger to take place.</p>
 
 </div>
@@ -15029,7 +14992,7 @@ and such a price increase, that no committee would ever allow such a merger to t
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-python"><pre><span></span><span class="n">reset_names</span><span class="p">()</span>
@@ -15063,13 +15026,13 @@ and such a price increase, that no committee would ever allow such a merger to t
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>Company 1 with Mc = 26.71 + 8.34 * q
- 	Produces 26.08  with €10755.49 profit.
+	Produces 26.08 units  with €10755.49 profit.
 
 Company 2 with Mc = 4.0 + 2.0 * q
- 	Produces 36.64  with €21227.61 profit.
+	Produces 36.64 units  with €21227.61 profit.
 
 Company 3 with Mc = 4.1 + 2.2 * q
- 	Produces 36.23  with €20752.41 profit.
+	Produces 36.23 units  with €20752.41 profit.
 
 Total production is 98.95 units @ €656.6.
 HHI:3406
@@ -15084,7 +15047,7 @@ HHI:3406
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-python"><pre><span></span><span class="k">for</span> <span class="n">combination</span> <span class="ow">in</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]:</span>
@@ -15096,8 +15059,8 @@ HHI:3406
     <span class="n">old_profits</span><span class="o">=</span><span class="nb">sum</span><span class="p">([</span><span class="n">companies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">profits</span><span class="p">(</span><span class="n">price</span><span class="p">),</span>
                      <span class="n">companies</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">profits</span><span class="p">(</span><span class="n">price</span><span class="p">)])</span>
     
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The sum of the profits, of companies </span><span class="si">{</span><span class="n">companies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
-          <span class="sa">f</span><span class="s2">&quot;and </span><span class="si">{</span><span class="n">companies</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="se">\n</span><span class="s2"> </span><span class="se">\t</span><span class="s2"> before the merger, where:&quot;</span><span class="p">,</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The sum of the profits of companies </span><span class="si">{</span><span class="n">companies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+          <span class="sa">f</span><span class="s2">&quot;and </span><span class="si">{</span><span class="n">companies</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="se">\n</span><span class="s2"> </span><span class="se">\t</span><span class="s2"> before the merger were:&quot;</span><span class="p">,</span>
           <span class="sa">f</span><span class="s2">&quot;€</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">old_profits</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="n">market_stats_dump</span><span class="p">(</span><span class="n">post_merge</span><span class="p">,</span> <span class="n">quantity</span><span class="p">,</span> <span class="n">new_price</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;HHI:</span><span class="si">{</span><span class="n">hhi</span><span class="p">(</span><span class="n">post_merge</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -15122,14 +15085,14 @@ HHI:3406
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>The sum of the profits, of companies 1 and 2
- 	 before the merger, where: €31983.1
+<pre>The sum of the profits of companies 1 and 2
+ 	 before the merger were: €31983.1
 
 Company 1&amp;2 with Mc = 8.39 + 1.61 * q
- 	Produces 45.52  with €32757.21 profit.
+	Produces 45.52 units  with €32757.21 profit.
 
 Company 3 with Mc = 4.1 + 2.2 * q
- 	Produces 44.27  with €30990.0 profit.
+	Produces 44.27 units  with €30990.0 profit.
 
 Total production is 98.95 units @ €801.47.
 HHI:5001
@@ -15137,14 +15100,14 @@ The new price is 22.0% higher.
 
 ************************************************************
 
-The sum of the profits, of companies 1 and 3
- 	 before the merger, where: €35331.78
+The sum of the profits of companies 1 and 3
+ 	 before the merger were: €35331.78
 
 Company 1&amp;3 with Mc = 8.82 + 1.74 * q
- 	Produces 45.12  with €32179.76 profit.
+	Produces 45.12 units  with €32179.76 profit.
 
 Company 2 with Mc = 4.0 + 2.0 * q
- 	Produces 44.73  with €31631.46 profit.
+	Produces 44.73 units  with €31631.46 profit.
 
 Total production is 98.95 units @ €800.63.
 HHI:5000
@@ -15152,14 +15115,14 @@ The new price is 22.0% higher.
 
 ************************************************************
 
-The sum of the profits, of companies 2 and 3
- 	 before the merger, where: €49765.39
+The sum of the profits of companies 2 and 3
+ 	 before the merger were: €49765.39
 
 Company 2&amp;3 with Mc = 4.05 + 1.05 * q
- 	Produces 51.07  with €41232.02 profit.
+	Produces 51.07 units  with €41232.02 profit.
 
 Company 1 with Mc = 26.71 + 8.34 * q
- 	Produces 34.71  with €19046.77 profit.
+	Produces 34.71 units  with €19046.77 profit.
 
 Total production is 98.95 units @ €864.94.
 HHI:5182
@@ -15178,13 +15141,13 @@ The new price is 32.0% higher.
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>&nbsp;&nbsp;&nbsp;&nbsp; If companies 1 and 2 merge, the merger is profitable. However, the constant part of $MC_{1\&amp;2}$ is almost double that of $MC_{2}$, so we have to make sure that the merged company is actually producing only in the facilities of company 2. So we use $MC_{2}=MC_{1\&amp;2}$</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp; If companies 1 and 2 merge, the merger is profitable. However, the constant part of $MC_{1\&amp;2}$ is almost double than that of $MC_{2}$, so we have to make sure that the merged company is actually producing only in the facilities of company 2. So we use $MC_{2}=MC_{1\&amp;2}$</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-python"><pre><span></span><span class="n">reset_names</span><span class="p">()</span>
@@ -15217,10 +15180,10 @@ The new price is 32.0% higher.
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>Company 2 with Mc = 4.0 + 2.0 * q
- 	Produces 45.01  with €32036.01 profit.
+	Produces 45.01 units  with €32036.01 profit.
 
 Company 3 with Mc = 4.1 + 2.2 * q
- 	Produces 44.51  with €31320.63 profit.
+	Produces 44.51 units  with €31320.63 profit.
 
 Total production is 89.52 units @ €805.71.
 HHI:5000
