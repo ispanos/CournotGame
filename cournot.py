@@ -255,8 +255,8 @@ def market_stats_dump(companies: CompanyList, q: float, p: float):
     Print data for the market.
     """
     for comp in companies:
-        print(f"Company {comp.name} with {comp.equation}\n",
-              f"\tProduces {round(comp.production, 2)}",
+        print(f"Company {comp.name} with {comp.equation}\n"
+              f"\tProduces {round(comp.production, 2)} units",
               f" with €{round(comp.profits(p), 2)} profit.\n")
 
     print(f"Total production is {round(q, 2)} units @ €{round(p, 2)}.")
@@ -447,7 +447,7 @@ def consecutive_merger(old_price, companies, combination, demand):
     old_profits = sum([companies[i].profits(old_price),
                        companies[j].profits(old_price)])
 
-    print(f"The sum of the profits, of companies {companies[i].name}",
+    print(f"The sum of the profits of companies {companies[i].name}",
           f"and {companies[j].name}\n \tbefore the merger, were:",
           f"€{round(old_profits, 2)}\n")
     market_stats_dump(post_merge, new_quantity, new_price)
