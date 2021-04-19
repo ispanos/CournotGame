@@ -14255,8 +14255,8 @@ a.anchor-link {
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Cournot-market-competition-simulations">Cournot market competition simulations<a class="anchor-link" href="#Cournot-market-competition-simulations">&#182;</a></h1><h2 id="Spanos-Ioannis">Spanos Ioannis<a class="anchor-link" href="#Spanos-Ioannis">&#182;</a></h2><p>This presentation is a Jupiter Notebook, so that we can interactively run python code.
-It is accompanied by a script writen in python, linked bellow.
-<a href="https://github.com/ispanos/CournotGame">https://github.com/ispanos/CournotGame</a></p>
+It is accompanied by a script writen in python, linked bellow.</p>
+<p><a href="https://github.com/ispanos/CournotGame">https://github.com/ispanos/CournotGame</a></p>
 <p>This file also serves as documentation for the aforementioned script and is published under the MIT licence.</p>
 <p>Copyright 2021 Spanos Ioannis, github.com/ispanos</p>
 <p>Permission is hereby granted, free of charge, to any person obtaining a copy of this
@@ -14278,7 +14278,7 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEAL
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Defining-our-market">Defining our market<a class="anchor-link" href="#Defining-our-market">&#182;</a></h1><p>We assume the Inverse Demand Curve is linear,
 $$
-P = Α - Β*Q
+P = A - B*Q
 $$
 where P is the Price and Q is the total demand.</p>
 <p>We also assume that the first derivatives of the Cost Curves of our companies are:</p>
@@ -14293,34 +14293,24 @@ $$<p>where <strong>i</strong> is the number of the company. In our case, in the 
 <h1 id="Calculating-production-levels">Calculating production levels<a class="anchor-link" href="#Calculating-production-levels">&#182;</a></h1><h2 id="Best-Responses">Best Responses<a class="anchor-link" href="#Best-Responses">&#182;</a></h2><p>Since the companies are in a <strong>Cournot market game</strong>, each one of them is going to
 maximize its profits, by adjusting its production, according the demand and its
 competitor's production.</p>
-$$
-maxΠ_{i}(q_{i}) =&gt; MR_{i} = MC_{i}\ (1)
-\\...\\
-for\ i =1,\ (1)\ =&gt;\ (M_{1} + 2*B)*q_{1} + B*q_{2} + B*q_{3} = A - K_{1}
-$$$$
-for\ i =2,\ (1)\ =&gt;\ B*q_{1} + (M_{2} + 2*B)*q_{2} + B*q_{3} = A - K_{2}
-$$$$
-for\ i =3,\ (1)\ =&gt;\ B*q_{1} + B*q_{2} + (M_{3} + 2*B)*q_{3} = A - K_{3}
-\\
-Or\\
-\\
+$$max\Pi_{i}(q_{i}) =&gt; MR_{i} = MC_{i}\ (1)$$$$...$$$$for\ i =1,\ (1)\ =&gt;\ (M_{1} + 2*B)*q_{1} + B*q_{2} + B*q_{3} = A - K_{1}$$$$for\ i =2,\ (1)\ =&gt;\ B*q_{1} + (M_{2} + 2*B)*q_{2} + B*q_{3} = A - K_{2}$$$$for\ i =3,\ (1)\ =&gt;\ B*q_{1} + B*q_{2} + (M_{3} + 2*B)*q_{3} = A - K_{3}$$$$Or$$$$
 \begin{bmatrix}
-(M_{1} + 2*B) &amp; Β &amp; Β\\
-Β &amp; (M_{2} + 2B) &amp; Β\\
-B &amp; B &amp; (M_{3} + 2B)
+(M_{1} + 2*B) &amp; B &amp; B \\
+B &amp; (M_{2} + 2*B) &amp; B \\
+B &amp; B &amp; (M_{3} + 2*B)
 \end{bmatrix}*
 \begin{bmatrix}
-q_{1}\\ q_{2}\\ q_{3}
+q_{1} \\ q_{2} \\ q_{3}
 \end{bmatrix}=
 \begin{bmatrix}
-A - K_{1}\\ A - K_{2}\\ A - K_{3}
+A - K_{1} \\ A - K_{2} \\ A - K_{3}
 \end{bmatrix}
 $$
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Merger">Merger<a class="anchor-link" href="#Merger">&#182;</a></h1><p>After two companies, i and j, merge, we need to add the two marginal cost curves horizontally:</p>
+<h1 id="Merger">Merger<a class="anchor-link" href="#Merger">&#182;</a></h1><h2 id="Marginal-Cost">Marginal Cost<a class="anchor-link" href="#Marginal-Cost">&#182;</a></h2><p>After two companies, i and j, merge, we need to add the two marginal cost curves horizontally:</p>
 $$
 q_{m} = q_{i(MC_{i})} + q_{j(MC_{j})},
 $$<p>where $q_{m(MC_{m})}$ is the inverse marginal cost curve of the new company - m.</p>
@@ -14329,20 +14319,13 @@ $$
 MC_{m} =
 \frac{M_{j}*K_{i} + M_{i}*K_{j}} {M_{i} + M_{j}} +
 \frac{M_{i}*M_{j}}{M_{i}+M_{j}}*q_{m}
-\\Or\\
+$$$$Or$$$$
 MC_{m} = K_{m} + M_{m}*q_{m}
-$$<p>Then, the new company, and the one that wasn't included in the merger, compete in quantities again.</p>
-$$
-maxΠ_{i}(q_{i}) =&gt; MR_{i} = MC_{i}\ (1)
-\\...\\
-for\ i =1,\ (1)\ =&gt;\ (M_{m} + 2*B)*q_{m} + B*q_{2} = A - K_{m}\\
-for\ i =1,\ (1)\ =&gt;\ B*q_{1} + (M_{2} + 2B)*q_{2} = A - K_{2}\\
-\\
-Or\
-\\
+$$<h2 id="Best-Responses">Best Responses<a class="anchor-link" href="#Best-Responses">&#182;</a></h2><p>The new company, and the one that wasn't included in the merger, compete in quantities again.</p>
+$$max\Pi_{i}(q_{i}) =&gt; MR_{i} = MC_{i}\ (1)$$$$...$$$$for\ i =1,\ (1)\ =&gt;\ (M_{m} + 2*B)*q_{m} + B*q_{2} = A - K_{m}$$$$for\ i =1,\ (1)\ =&gt;\ B*q_{1} + (M_{2} + 2*B)*q_{2} = A - K_{2}$$$$Or$$$$
 \begin{bmatrix}
-(M_{m} + 2*B) &amp; Β \\
-Β &amp; (M_{2} + 2B) \\
+(M_{m} + 2*B) &amp; B \\
+B &amp; (M_{2} + 2*B) \\
 \end{bmatrix}*
 \begin{bmatrix}
 q_{m}\\ q_{2}
@@ -14364,7 +14347,7 @@ Out of the three possible outcomes, select the marginal cost curve that maximize
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Cournot-market-game-for-N-companies">Cournot market game for N companies<a class="anchor-link" href="#Cournot-market-game-for-N-companies">&#182;</a></h2><p>We observe that the matrix that solves for the production units of each company,
+<h1 id="Cournot-market-game-for-N-companies">Cournot market game for N companies<a class="anchor-link" href="#Cournot-market-game-for-N-companies">&#182;</a></h1><p>We observe that the matrix that solves for the production units of each company,
 follows a clear pattern.</p>
 <p>On the left side, the diagonal, is</p>
 $$
@@ -14410,7 +14393,7 @@ every company competing in the market.</li>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Simulations">Simulations<a class="anchor-link" href="#Simulations">&#182;</a></h1><p>Let's start with 3 companies with the following marginal cost curves:</p>
+<h1 id="Simulations">Simulations<a class="anchor-link" href="#Simulations">&#182;</a></h1><h2 id="Three-way-game-with-one-merger">Three-way game with one merger<a class="anchor-link" href="#Three-way-game-with-one-merger">&#182;</a></h2><p>Let's start with 3 companies with the following marginal cost curves:</p>
 <p>Company 1: $MC_{1}\ =\ 2.71\ +\ 5.34*q_{1}$,</p>
 <p>Company 2: $MC_{2}\ =\ 6.13\ +\ 1.11*q_{2}$,</p>
 <p>Company 3: $MC_{3}\ =\ 4.75\ +\ 1.53*q_{3}$</p>
@@ -14570,7 +14553,7 @@ The new price is 32.0% higher.
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Merger-Paradox">Merger Paradox<a class="anchor-link" href="#Merger-Paradox">&#182;</a></h1><p>&nbsp;&nbsp;&nbsp;&nbsp; As we simulate the mergers of two companies, by adding their $q_{(mc)}$ horizontally,
+<h2 id="Merger-Paradox">Merger Paradox<a class="anchor-link" href="#Merger-Paradox">&#182;</a></h2><p>&nbsp;&nbsp;&nbsp;&nbsp; As we simulate the mergers of two companies, by adding their $q_{(mc)}$ horizontally,
 we observe that the resulting companies produce fewer units. The competing companies
 are now fewer, thus the HHI index increases after the merger. The new equilibrium is
 closer to the equilibrium of a monopoly. However, the profits of the newly created
@@ -14584,8 +14567,7 @@ merger, benefit from the merger. The only beneficiary is the company that did no
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<hr>
-<h1 id="Extras">Extras<a class="anchor-link" href="#Extras">&#182;</a></h1><h2 id="Consecutive-mergers---Simulation-#2">Consecutive mergers - Simulation #2<a class="anchor-link" href="#Consecutive-mergers---Simulation-#2">&#182;</a></h2><p>&nbsp;&nbsp;&nbsp;&nbsp; Now, lets simulate a market comprized of more comprised, given that we are able to add as many companies as we want in the simulation.</p>
+<h2 id="Consecutive-mergers-with-7-companies">Consecutive mergers with 7 companies<a class="anchor-link" href="#Consecutive-mergers-with-7-companies">&#182;</a></h2><p>&nbsp;&nbsp;&nbsp;&nbsp; Now, lets simulate a market comprized of more comprised, given that we are able to add as many companies as we want in the simulation.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -14988,7 +14970,7 @@ and such a price increase, that no committee would ever allow such a merger to t
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Non-symmetrical-costs---Simulation-#3">Non symmetrical costs - Simulation #3<a class="anchor-link" href="#Non-symmetrical-costs---Simulation-#3">&#182;</a></h1>
+<h2 id="Non-symmetrical-costs">Non symmetrical costs<a class="anchor-link" href="#Non-symmetrical-costs">&#182;</a></h2>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
@@ -15196,6 +15178,11 @@ HHI:5000
 
 </div>
 
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+
+</div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
