@@ -14276,7 +14276,7 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEAL
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Defining-our-market">Defining our market<a class="anchor-link" href="#Defining-our-market">&#182;</a></h1><p>We assume the Inverse Demand Curve is linear,
+<h1 id="Defining-our-market">Defining our market<a class="anchor-link" href="#Defining-our-market">&#182;</a></h1><p>We assume the linear Inverse Demand Curve,
 $$
 P = A - B*Q
 $$
@@ -14284,14 +14284,14 @@ where P is the Price and Q is the total demand.</p>
 <p>We also assume that the first derivatives of the Cost Curves of our companies are:</p>
 $$
 MC_{i} = K_{i} + M_{i}q_{i}
-$$<p>where <strong>i</strong> is the number of the company. In our case, in the beginning there are 3.</p>
+$$<p>where <strong>i</strong> is the number of the company. In our case, in the beginning there are 3 companies.</p>
 
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Calculating-production-levels">Calculating production levels<a class="anchor-link" href="#Calculating-production-levels">&#182;</a></h1><h2 id="Best-Responses">Best Responses<a class="anchor-link" href="#Best-Responses">&#182;</a></h2><p>Since the companies are in a <strong>Cournot market game</strong>, each one of them is going to
-maximize its profits, by adjusting its production, according the demand and its
+maximize its profits, by adjusting its production, according to the demand and its
 competitor's production.</p>
 $$max\Pi_{i}(q_{i}) =&gt; MR_{i} = MC_{i}\ (1)$$$$...$$$$for\ i =1,\ (1)\ =&gt;\ (M_{1} + 2*B)*q_{1} + B*q_{2} + B*q_{3} = A - K_{1}$$$$for\ i =2,\ (1)\ =&gt;\ B*q_{1} + (M_{2} + 2*B)*q_{2} + B*q_{3} = A - K_{2}$$$$for\ i =3,\ (1)\ =&gt;\ B*q_{1} + B*q_{2} + (M_{3} + 2*B)*q_{3} = A - K_{3}$$$$Or$$$$
 \begin{bmatrix}
@@ -14310,10 +14310,10 @@ $$
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Merger">Merger<a class="anchor-link" href="#Merger">&#182;</a></h1><h2 id="Marginal-Cost">Marginal Cost<a class="anchor-link" href="#Marginal-Cost">&#182;</a></h2><p>After two companies, i and j, merge, we need to add the two marginal cost curves horizontally:</p>
+<h1 id="Merger">Merger<a class="anchor-link" href="#Merger">&#182;</a></h1><h2 id="Marginal-Cost">Marginal Cost<a class="anchor-link" href="#Marginal-Cost">&#182;</a></h2><p>After companies i and j merge, we add the two marginal cost curves horizontally:</p>
 $$
 q_{m} = q_{i(MC_{i})} + q_{j(MC_{j})},
-$$<p>where $q_{m(MC_{m})}$ is the inverse marginal cost curve of the new company - m.</p>
+$$<p>where $q_{m(MC_{m})}$ is the inverse marginal cost curve of the new company, named m.</p>
 <p>The new company, has now the following marginal cost:</p>
 $$
 MC_{m} =
@@ -14321,7 +14321,7 @@ MC_{m} =
 \frac{M_{i}*M_{j}}{M_{i}+M_{j}}*q_{m}
 $$$$Or$$$$
 MC_{m} = K_{m} + M_{m}*q_{m}
-$$<h2 id="Best-Responses">Best Responses<a class="anchor-link" href="#Best-Responses">&#182;</a></h2><p>The new company, and the one that wasn't included in the merger, compete in quantities again.</p>
+$$<h2 id="Best-Responses">Best Responses<a class="anchor-link" href="#Best-Responses">&#182;</a></h2><p>The new company, and the one that wasn't included in the merger, compete again on the amount of output they will produce.</p>
 $$max\Pi_{i}(q_{i}) =&gt; MR_{i} = MC_{i}\ (1)$$$$...$$$$for\ i =1,\ (1)\ =&gt;\ (M_{m} + 2*B)*q_{m} + B*q_{2} = A - K_{m}$$$$for\ i =1,\ (1)\ =&gt;\ B*q_{1} + (M_{2} + 2*B)*q_{2} = A - K_{2}$$$$Or$$$$
 \begin{bmatrix}
 (M_{m} + 2*B) &amp; B \\
@@ -14554,10 +14554,10 @@ The new price is 32.0% higher.
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Merger-Paradox">Merger Paradox<a class="anchor-link" href="#Merger-Paradox">&#182;</a></h2><p>&nbsp;&nbsp;&nbsp;&nbsp; As we simulate the mergers of two companies, by adding their $q_{(mc)}$ horizontally,
-we observe that the resulting companies produce fewer units. The competing companies
+we can observe that the resulting companies produce fewer units. The competing companies
 are now fewer, thus the HHI index increases after the merger. The new equilibrium is
 closer to the equilibrium of a monopoly. However, the profits of the newly created
-company are less than the sum of the profits of the companies that merged.</p>
+company are less than the sum of the profits of the companies that merged. None of the above mergers are profitable, and the companies would rather compete than merge.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp; The company that benefits from the merger is the one that did not take part in it.
 This happens because both its market share, and the market price, increase.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp; The conclusion is that neither the consumers, nor the companies that took part in the
@@ -14955,11 +14955,11 @@ The new price is 31.0% higher.
 </tr>
 </tbody>
 </table>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; Only after 5 consecutive mergers did we see an increase in the profitability
+<p>&nbsp;&nbsp;&nbsp;&nbsp; Only after 5 consecutive mergers did we see an increase in the profitability of the new company,
 compared to the pre-merge conditions.
 The new company, named "<code>1&amp;2&amp;3&amp;4&amp;5&amp;6</code>" in the above code-block, has
-a €36541.23 profit. This happens because we have much less competition,
-with an HHI index that's three times higher than before.
+a €36541.23 profit. The above mentioned event is mainly attributable to the significant decline of competition.
+The HHI index is now three times higher than before.
 The price is more than two times higher, and the production is 25% lower.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp; Furthermore, the mergers that include less than 6 companiesare not profitable,
 hence the companies would rather compete than merge.</p>
@@ -15181,13 +15181,8 @@ HHI:5000
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>&nbsp;&nbsp;&nbsp;&nbsp; Company "1&amp;2" produces in both facilities, because the profits are now lower than before.</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; The reason that the merger of companies 1 and 2 is profitable is the asymmetry of the marginal costs. The price increased by 22%, and the third company is almost 50% more profitable. The total production is exactly the same. All in all, the merger is probably going to be prevented by the competition committee.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp; The reason that Company 1 and Company 2's merger is profitable, is due to the asymmetry of the marginal costs. The price increased by 22%, and the third company is almost 50% more profitable. The total production is exactly the same. All in all, the merger is probably going to be prevented by the competition committee.</p>
 
 </div>
 </div>
