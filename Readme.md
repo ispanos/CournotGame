@@ -1,6 +1,7 @@
 # Cournot market competition simulations
 
-This python script can calculate the amount of production of N companies, in a Cournot game market.
+This python script can calculate the amount of production of N companies, in a Cournot game market. Furthermore it can merge two companies that compete in that market, by adding their
+marginal costs horizontally, without any efficiency parameters.
 
 At the time of writing this description, the following assumptions must be made:
 
